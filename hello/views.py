@@ -10,16 +10,16 @@ def home(request):
 
 def hello_there(request, name):
     now = datetime.now()
-    formatted_now = now.strptime("%A, %d %B, %Y at %X")
+    formatted_now = now.strftime("%A, %d %B, %Y at %X")
 
     # Filter the name argument to letters only using regular expressions. URL arguments
     # can contain arbitrary text, so we restrict to safe characters only.
-    mathch_object = re.match("[a-z or A-Z]",name)
+    match_object = re.match("[a-zA-Z]+", name)
 
-    if mathch_object:
-        clean_name = mathch_object.group(0)
+    if match_object:
+        clean_name = match_object.group(0)
     else:
         clean_name = "Friend"
 
-    content = "Hello there, " + clean_name + "! It's "+ formatted_now
+    content = "Hello there, " + clean_name + "! It's " + formatted_now
     return HttpResponse(content)
