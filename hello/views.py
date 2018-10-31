@@ -6,7 +6,16 @@ from django.http import HttpResponse
 from datetime import datetime
 
 def home(request):
-    return HttpResponse("Hello, Django")
+    return render(request, "hello/home.html")
+
+def about(request):
+    return render(request, "hello/about.html")
+
+def contact(request):
+    return render(request, "hello/contact.html")
+
+def log(request):
+    return render(request, "hello/log.html")
 
 def hello_there(request, name):   
 
